@@ -5,3 +5,4 @@
 - [2025-12-15] Defined factory presets structure (flat, bass heavy, lofi chill).
 - [2025-12-16] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
 - [2025-12-16] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-16] Debugging DynamicsCompressorNode threshold limits to prevent clipping.

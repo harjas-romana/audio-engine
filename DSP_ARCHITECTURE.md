@@ -41,3 +41,4 @@
 - [2025-12-27] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
 - [2025-12-28] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
 - [2025-12-28] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-28] Debugging DynamicsCompressorNode threshold limits to prevent clipping.

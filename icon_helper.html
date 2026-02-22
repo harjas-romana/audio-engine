@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><title>Generate Icons</title></head>
+<body style="background:#222;color:#fff;font-family:sans-serif;padding:40px">
+<h2>Right-click each icon → Save Image As</h2>
+<script>
+[16, 48, 128].forEach(s => {
+  const c = document.createElement('canvas');
+  c.width = c.height = s;
+  const x = c.getContext('2d');
+  const m = s / 2;
+
+  // Background
+  x.fillStyle = '#000';
+  x.beginPath(); x.arc(m, m, m, 0, Math.PI * 2); x.fill();
+
+  // Outer ring
+  x.strokeStyle = '#fff';
+  x.lineWidth = s * 0.05;
+  x.beginPath(); x.arc(m, m, m * 0.82, 0, Math.PI * 2); x.stroke();
+
+  // Inner ring (dashed)
+  x.lineWidth = s * 0.03;
+  x.setLineDash([s * 0.06, s * 0.04]);
+  x.beginPath(); x.arc(m, m, m * 0.55, 0, Math.PI * 2); x.stroke();
+  x.setLineDash([]);
+
+  // Center dot
+  x.fillStyle = '#fff';
+  x.beginPath(); x.arc(m, m, m * 0.18, 0, Math.PI * 2); x.fill();
+
+  // Cross lines
+  x.lineWidth = s * 0.04;
+  const o1 = m * 0.88, o2 = m * 0.98;
+  [[m,m-o2,m,m-o1],[m,m+o1,m,m+o2],[m-o2,m,m-o1,m],[m+o1,m,m+o2,m]].forEach(([ax,ay,bx,by]) => {
+    x.beginPath(); x.moveTo(ax, ay); x.lineTo(bx, by); x.stroke();
+  });
+
+  document.body.appendChild(c);
+  c.style.margin = '20px';
+  c.style.border = '1px solid #555';
+  const p = document.createElement('p');
+  p.textContent = `icon${s}.png`;
+  p.style.textAlign = 'center';
+  document.body.appendChild(p);
+});
+</script>
+</body>
+</html>

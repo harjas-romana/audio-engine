@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>SonicForge Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- ==================== HEADER ==================== -->
+        <header id="header">
+            <div class="header-row-1">
+                <div class="brand">
+                    <div class="brand-icon">
+                        <svg viewBox="0 0 32 32" width="26" height="26" fill="none">
+                            <circle cx="16" cy="16" r="14.5" stroke="#fff" stroke-width="1.5" />
+                            <circle cx="16" cy="16" r="9" stroke="#fff" stroke-width="1" stroke-dasharray="2.5 1.5" />
+                            <circle cx="16" cy="16" r="3.5" fill="#fff" />
+                            <line x1="16" y1="1.5" x2="16" y2="6.5" stroke="#fff" stroke-width="1.2"
+                                stroke-linecap="square" />
+                            <line x1="16" y1="25.5" x2="16" y2="30.5" stroke="#fff" stroke-width="1.2"
+                                stroke-linecap="square" />
+                            <line x1="1.5" y1="16" x2="6.5" y2="16" stroke="#fff" stroke-width="1.2"
+                                stroke-linecap="square" />
+                            <line x1="25.5" y1="16" x2="30.5" y2="16" stroke="#fff" stroke-width="1.2"
+                                stroke-linecap="square" />
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <h1>SONICFORGE</h1>
+                        <p class="brand-sub">DSP SUITE v4.0</p>
+                    </div>
+                </div>
+                <div class="master-group">
+                    <span class="master-label" id="masterLabel">OFF</span>
+                    <label class="switch switch-master">
+                        <input type="checkbox" id="masterToggle" />
+                        <span class="switch-track"><span class="switch-thumb"></span></span>
+                    </label>
+                </div>
+            </div>
+            <div class="status-strip">
+                <span class="status-dot" id="statusDot"></span>
+                <span class="status-text" id="statusText">SYSTEM IDLE</span>
+                <span class="status-ver">4.0.0</span>
+            </div>
+        </header>
+
+        <!-- ==================== NAVIGATION ==================== -->
+        <nav id="nav">
+            <button class="tab active" data-tab="mode">
+                <svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <circle cx="10" cy="10" r="7.5" />
+                    <circle cx="10" cy="10" r="2.5" />
+                </svg>
+                <span>MODE</span>
+            </button>
+            <button class="tab" data-tab="spatial">
+                <svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <circle cx="10" cy="10" r="7.5" />
+                    <ellipse cx="10" cy="10" rx="7.5" ry="3" />
+                </svg>
+                <span>SPATIAL</span>
+            </button>
+            <button class="tab" data-tab="eq">
+                <svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <line x1="3" y1="14" x2="3" y2="6" />
+                    <line x1="7" y1="16" x2="7" y2="4" />
+                    <line x1="11" y1="12" x2="11" y2="8" />
+                    <line x1="15" y1="15" x2="15" y2="5" />
+                </svg>
+                <span>EQ</span>
+            </button>
+            <button class="tab" data-tab="enhance">
+                <svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M10 2v16M6 6v8M14 4v12M2 8v4M18 7v6" />
+                </svg>
+                <span>ENHANCE</span>
+            </button>
+            <button class="tab" data-tab="presets">
+                <svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <rect x="3" y="3" width="14" height="14" rx="1.5" />
+                    <line x1="7" y1="7" x2="13" y2="7" />
+                    <line x1="7" y1="10" x2="13" y2="10" />
+                    <line x1="7" y1="13" x2="10" y2="13" />
+                </svg>
+                <span>PRESETS</span>
+            </button>
+            <button class="tab" data-tab="info">
+                <svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <circle cx="10" cy="10" r="7.5" />
+                    <line x1="10" y1="9" x2="10" y2="14" />
+                    <circle cx="10" cy="6.5" r="0.7" fill="currentColor" stroke="none" />
+                </svg>
+                <span>INFO</span>
+            </button>
+        </nav>
+
+        <!-- ==================== PANELS ==================== -->
+        <main id="main">
+
+            <!-- ===== MODE ===== -->
+            <section class="panel active" id="panel-mode">
+                <div class="panel-header">
+                    <h2>PROCESSING MODE</h2>
+                    <p>Select primary audio processing profile</p>
+                </div>
+                <div class="mode-grid">
+                    <button class="mode-card active" data-mode="default">
+                        <div class="mc-icon">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="1.6">
+                                <path d="M9 18V5l12-2v13" />
+                                <circle cx="6" cy="18" r="3" />
+                                <circle cx="18" cy="16" r="3" />
+                            </svg>
+                        </div>
+                        <div class="mc-body">
+                            <strong>PURE</strong>
+                            <span>Uncolored reference</span>
+                        </div>
+                        <div class="mc-check"><svg viewBox="0 0 16 16" width="14" height="14" fill="none"
+                                stroke="currentColor" stroke-width="2.2">
+                                <polyline points="3,8 6.5,11.5 13,4.5" />
+                            </svg></div>
+                    </button>
+
+                    <button class="mode-card" data-mode="16d">
+                        <div class="mc-icon">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="1.6">
+                                <circle cx="12" cy="12" r="9.5" />
+                                <circle cx="12" cy="12" r="6" stroke-dasharray="2 1.5" />
+                                <circle cx="12" cy="12" r="2.5" />
+                                <circle cx="12" cy="12" r="0.8" fill="currentColor" />
+                            </svg>
+                        </div>
+                        <div class="mc-body">
+                            <strong>16D SURROUND</strong>
+                            <span>Fixed spatial array</span>
+                        </div>
+                        <div class="mc-check"><svg viewBox="0 0 16 16" width="14" height="14" fill="none"
+                                stroke="currentColor" stroke-width="2.2">
+                                <polyline points="3,8 6.5,11.5 13,4.5" />
+                            </svg></div>
+                    </button>
+
+                    <button class="mode-card" data-mode="studio">
+                        <div class="mc-icon">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="1.6">
+                                <rect x="2" y="6" width="20" height="12" rx="1.5" />
+                                <line x1="6" y1="10" x2="6" y2="14" />
+                                <line x1="10" y1="8" x2="10" y2="16" />
+                                <line x1="14" y1="9" x2="14" y2="15" />
+                                <line x1="18" y1="7" x2="18" y2="17" />
+                            </svg>
+                        </div>
+                        <div class="mc-body">
+                            <strong>STUDIO</strong>
+                            <span>Flat monitoring</span>
+                        </div>
+                        <div class="mc-check"><svg viewBox="0 0 16 16" width="14" height="14" fill="none"
+                                stroke="currentColor" stroke-width="2.2">
+                                <polyline points="3,8 6.5,11.5 13,4.5" />
+                            </svg></div>
+                    </button>
+
+                    <button class="mode-card" data-mode="360">
+                        <div class="mc-icon">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="1.6">
+                                <circle cx="12" cy="12" r="9.5" />
+                                <ellipse cx="12" cy="12" rx="9.5" ry="3.5" />
+                                <ellipse cx="12" cy="12" rx="3.5" ry="9.5" />
+                            </svg>
+                        </div>
+                        <div class="mc-body">
+                            <strong>360° SPHERE</strong>
+                            <span>Full immersion</span>
+                        </div>
+                        <div class="mc-check"><svg viewBox="0 0 16 16" width="14" height="14" fill="none"
+                                stroke="currentColor" stroke-width="2.2">
+                                <polyline points="3,8 6.5,11.5 13,4.5" />
+                            </svg></div>
+                    </button>
+
+                    <button class="mode-card" data-mode="concert">
+                        <div class="mc-icon">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="1.6">
+                                <path d="M4 20 L12 4 L20 20" />
+                                <line x1="7" y1="14" x2="17" y2="14" />
+                                <circle cx="12" cy="9.5" r="1.2" fill="currentColor" />
+                            </svg>
+                        </div>
+                        <div class="mc-body">
+                            <strong>CONCERT HALL</strong>
+                            <span>Large space reverb</span>
+                        </div>
+                        <div class="mc-check"><svg viewBox="0 0 16 16" width="14" height="14" fill="none"
+                                stroke="currentColor" stroke-width="2.2">
+                                <polyline points="3,8 6.5,11.5 13,4.5" />
+                            </svg></div>
+                    </button>
+
+                    <button class="mode-card" data-mode="vocal">
+                        <div class="mc-icon">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="1.6">
+                                <rect x="9" y="2" width="6" height="10" rx="3" />
+                                <path d="M5 11a7 7 0 0014 0" />
+                                <line x1="12" y1="17" x2="12" y2="21" />
+                                <line x1="8" y1="21" x2="16" y2="21" />
+                            </svg>
+                        </div>
+                        <div class="mc-body">
+                            <strong>VOCAL</strong>
+                            <span>Voice-forward mix</span>
+                        </div>
+                        <div class="mc-check"><svg viewBox="0 0 16 16" width="14" height="14" fill="none"
+                                stroke="currentColor" stroke-width="2.2">
+                                <polyline points="3,8 6.5,11.5 13,4.5" />
+                            </svg></div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- ===== SPATIAL ===== -->
+            <section class="panel" id="panel-spatial">
+                <div class="panel-header">
+                    <h2>SPATIAL PROCESSING</h2>
+                    <p>3D sound field and room simulation</p>
+                </div>
+
+                <div class="section-label">ROOM ENGINE</div>
+                <div class="ctrl-group">
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Room Size</label><span class="ctrl-val" id="v-roomSize">40</span>
+                        </div>
+                        <input type="range" class="slider" id="roomSize" min="0" max="100" value="40" />
+                        <div class="ctrl-range"><span>0</span><span>100</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Reverb Decay</label><span class="ctrl-val"
+                                id="v-reverbDecay">25</span></div>
+                        <input type="range" class="slider" id="reverbDecay" min="0" max="100" value="25" />
+                        <div class="ctrl-range"><span>0</span><span>100</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Wet / Dry Mix</label><span class="ctrl-val"
+                                id="v-wetDry">30%</span></div>
+                        <input type="range" class="slider" id="wetDry" min="0" max="100" value="30" />
+                        <div class="ctrl-range"><span>0%</span><span>100%</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Pre-Delay</label><span class="ctrl-val" id="v-preDelay">15
+                                ms</span></div>
+                        <input type="range" class="slider" id="preDelay" min="0" max="100" value="15" />
+                        <div class="ctrl-range"><span>0</span><span>100</span></div>
+                    </div>
+                </div>
+
+                <div class="section-label">SPATIAL FIELD</div>
+                <div class="ctrl-group">
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Stereo Width</label><span class="ctrl-val"
+                                id="v-stereoWidth">100%</span></div>
+                        <input type="range" class="slider" id="stereoWidth" min="0" max="200" value="100" />
+                        <div class="ctrl-range"><span>0%</span><span>200%</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>16D Depth</label><span class="ctrl-val" id="v-depth16d">50</span>
+                        </div>
+                        <input type="range" class="slider" id="depth16d" min="0" max="100" value="50" />
+                        <div class="ctrl-range"><span>0</span><span>100</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Spatial Spread</label><span class="ctrl-val"
+                                id="v-spatialSpread">60°</span></div>
+                        <input type="range" class="slider" id="spatialSpread" min="0" max="180" value="60" />
+                        <div class="ctrl-range"><span>0°</span><span>180°</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Early Reflections</label><span class="ctrl-val"
+                                id="v-earlyRef">35</span></div>
+                        <input type="range" class="slider" id="earlyRef" min="0" max="100" value="35" />
+                        <div class="ctrl-range"><span>0</span><span>100</span></div>
+                    </div>
+                </div>
+
+                <div class="section-label">CROSSFEED</div>
+                <div class="ctrl-group">
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Crossfeed Amount</label><span class="ctrl-val"
+                                id="v-crossfeed">20</span></div>
+                        <input type="range" class="slider" id="crossfeed" min="0" max="100" value="20" />
+                        <div class="ctrl-range"><span>0</span><span>100</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== EQ ===== -->
+            <section class="panel" id="panel-eq">
+                <div class="panel-header">
+                    <h2>EQUALIZER</h2>
+                    <p>10-band parametric + tone shaping</p>
+                </div>
+
+                <!-- Quick Bass/Treble -->
+                <div class="bt-row">
+                    <div class="bt-block">
+                        <span class="bt-label">BASS</span>
+                        <div class="bt-controls">
+                            <button class="bt-btn" id="bassDown">−</button>
+                            <span class="bt-value" id="bassVal">0</span>
+                            <button class="bt-btn" id="bassUp">+</button>
+                        </div>
+                    </div>
+                    <div class="bt-block">
+                        <span class="bt-label">TREBLE</span>
+                        <div class="bt-controls">
+                            <button class="bt-btn" id="trebleDown">−</button>
+                            <span class="bt-value" id="trebleVal">0</span>
+                            <button class="bt-btn" id="trebleUp">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EQ Header Row -->
+                <div class="eq-toolbar">
+                    <span class="section-label" style="margin:0;border:0;padding:0">10-BAND EQ</span>
+                    <button class="flat-btn" id="eqFlat">RESET</button>
+                </div>
+
+                <!-- Band Sliders -->
+                <div class="eq-container">
+                    <div class="eq-scale">
+                        <span>+12</span><span>+6</span><span>0</span><span>−6</span><span>−12</span>
+                    </div>
+                    <div class="eq-bands" id="eqBands"></div>
+                </div>
+
+                <!-- Sub-bass / Presence / Air -->
+                <div class="section-label" style="margin-top:16px">TONE SHAPING</div>
+                <div class="ctrl-group">
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Sub-Bass</label><span class="ctrl-val" id="v-subBass">0 dB</span>
+                        </div>
+                        <input type="range" class="slider" id="subBass" min="0" max="12" value="0" />
+                        <div class="ctrl-range"><span>0</span><span>12</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Presence</label><span class="ctrl-val" id="v-presence">0 dB</span>
+                        </div>
+                        <input type="range" class="slider" id="presence" min="-6" max="6" value="0" />
+                        <div class="ctrl-range"><span>−6</span><span>+6</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Air</label><span class="ctrl-val" id="v-air">0 dB</span></div>
+                        <input type="range" class="slider" id="air" min="0" max="10" value="0" />
+                        <div class="ctrl-range"><span>0</span><span>10</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ENHANCE ===== -->
+            <section class="panel" id="panel-enhance">
+                <div class="panel-header">
+                    <h2>ENHANCEMENT</h2>
+                    <p>Dynamics, clarity, and advanced DSP</p>
+                </div>
+
+                <div class="section-label">OUTPUT</div>
+                <div class="ctrl-group">
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Master Volume</label><span class="ctrl-val"
+                                id="v-masterVol">100%</span></div>
+                        <input type="range" class="slider" id="masterVol" min="0" max="200" value="100" />
+                        <div class="ctrl-range"><span>0%</span><span>200%</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Balance</label><span class="ctrl-val" id="v-balance">C</span>
+                        </div>
+                        <input type="range" class="slider" id="balance" min="-100" max="100" value="0" />
+                        <div class="ctrl-range"><span>L100</span><span>R100</span></div>
+                    </div>
+                </div>
+
+                <div class="section-label">DYNAMICS</div>
+                <div class="ctrl-group">
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Threshold</label><span class="ctrl-val" id="v-compThreshold">−24
+                                dB</span></div>
+                        <input type="range" class="slider" id="compThreshold" min="-60" max="0" value="-24" />
+                        <div class="ctrl-range"><span>−60</span><span>0</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Ratio</label><span class="ctrl-val" id="v-compRatio">4:1</span>
+                        </div>
+                        <input type="range" class="slider" id="compRatio" min="1" max="20" value="4" />
+                        <div class="ctrl-range"><span>1:1</span><span>20:1</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Attack</label><span class="ctrl-val" id="v-compAttack">3 ms</span>
+                        </div>
+                        <input type="range" class="slider" id="compAttack" min="0" max="100" value="3" />
+                        <div class="ctrl-range"><span>0</span><span>100</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Release</label><span class="ctrl-val" id="v-compRelease">250
+                                ms</span></div>
+                        <input type="range" class="slider" id="compRelease" min="10" max="1000" value="250" />
+                        <div class="ctrl-range"><span>10</span><span>1000</span></div>
+                    </div>
+                </div>
+
+                <div class="section-label">FILTERS</div>
+                <div class="ctrl-group">
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>High-Pass</label><span class="ctrl-val" id="v-clarity">OFF</span>
+                        </div>
+                        <input type="range" class="slider" id="clarity" min="0" max="300" value="0" />
+                        <div class="ctrl-range"><span>OFF</span><span>300 Hz</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Low-Pass</label><span class="ctrl-val" id="v-warmth">OFF</span>
+                        </div>
+                        <input type="range" class="slider" id="warmth" min="2000" max="22000" value="22000" />
+                        <div class="ctrl-range"><span>2.0k</span><span>OFF</span></div>
+                    </div>
+                </div>
+
+                <div class="section-label">PROCESSING</div>
+                <div class="switch-group">
+                    <div class="switch-row">
+                        <div class="switch-info">
+                            <label>Loudness Normalization</label>
+                        </div>
+                        <label class="switch"><input type="checkbox" id="loudnessNorm" /><span
+                                class="switch-track"><span class="switch-thumb"></span></span></label>
+                    </div>
+                    <div class="switch-row">
+                        <div class="switch-info">
+                            <label>Mono Downmix</label>
+                        </div>
+                        <label class="switch"><input type="checkbox" id="monoCompat" /><span class="switch-track"><span
+                                    class="switch-thumb"></span></span></label>
+                    </div>
+                    <div class="switch-row">
+                        <div class="switch-info">
+                            <label>Analog Warmth</label>
+                        </div>
+                        <label class="switch"><input type="checkbox" id="analogWarmth" /><span
+                                class="switch-track"><span class="switch-thumb"></span></span></label>
+                    </div>
+                    <div class="switch-row">
+                        <div class="switch-info">
+                            <label>Noise Gate</label>
+                        </div>
+                        <label class="switch"><input type="checkbox" id="noiseGate" /><span class="switch-track"><span
+                                    class="switch-thumb"></span></span></label>
+                    </div>
+                </div>
+
+                <div class="section-label">PLAYBACK</div>
+                <div class="ctrl-group">
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Speed</label><span class="ctrl-val" id="v-speed">1.00×</span>
+                        </div>
+                        <input type="range" class="slider" id="speed" min="25" max="300" value="100" />
+                        <div class="ctrl-range"><span>0.25×</span><span>3.00×</span></div>
+                    </div>
+                    <div class="ctrl">
+                        <div class="ctrl-head"><label>Pitch</label><span class="ctrl-val" id="v-pitch">0</span></div>
+                        <input type="range" class="slider" id="pitch" min="-12" max="12" value="0" />
+                        <div class="ctrl-range"><span>−12</span><span>+12</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== PRESETS ===== -->
+            <section class="panel" id="panel-presets">
+                <div class="panel-header">
+                    <h2>PRESETS</h2>
+                    <p>Save, load, and manage configurations</p>
+                </div>
+
+                <div class="preset-save">
+                    <input type="text" id="presetName" placeholder="Preset name" maxlength="40" class="text-input" />
+                    <button class="btn-primary" id="savePreset">SAVE</button>
+                </div>
+
+                <div class="section-label">USER PRESETS</div>
+                <div class="preset-list" id="presetList">
+                    <div class="empty-state">No saved presets</div>
+                </div>
+
+                <div class="section-label">FACTORY PRESETS</div>
+                <div class="factory-grid" id="factoryGrid">
+                    <button class="factory-btn" data-f="flat"><strong>FLAT</strong></button>
+                    <button class="factory-btn" data-f="bass-heavy"><strong>BASS+</strong></button>
+                    <button class="factory-btn" data-f="bright"><strong>BRIGHT</strong></button>
+                    <button class="factory-btn" data-f="warm"><strong>WARM</strong></button>
+                    <button class="factory-btn" data-f="vocal"><strong>VOCAL</strong></button>
+                    <button class="factory-btn" data-f="podcast"><strong>SPEECH</strong></button>
+                    <button class="factory-btn" data-f="lofi"><strong>LO-FI</strong></button>
+                    <button class="factory-btn" data-f="cinema"><strong>CINEMA</strong></button>
+                    <button class="factory-btn" data-f="night"><strong>NIGHT</strong></button>
+                </div>
+
+                <div class="reset-zone">
+                    <button class="btn-danger" id="resetAll">RESET ALL</button>
+                </div>
+            </section>
+
+            <!-- ===== INFO ===== -->
+            <section class="panel" id="panel-info">
+                <div class="panel-header">
+                    <h2>SYSTEM INFO</h2>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-hero">SONICFORGE</div>
+                    <div class="info-ver">v4.0.0 · Professional DSP Suite</div>
+                </div>
+
+                <div class="info-card">
+                    <p class="info-line"><strong>ENGINEERED BY HARJAS</strong></p>
+                    <p class="info-line">Real-time Web Audio API processing for YouTube</p>
+                    <p class="info-line">Optimized for high-fidelity playback systems</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="section-label" style="margin-top:0">FEATURE SET</div>
+                    <div class="info-features">
+                        <div class="info-feat">· 16D Surround</div>
+                        <div class="info-feat">· 360° Spatial</div>
+                        <div class="info-feat">· Concert Hall</div>
+                        <div class="info-feat">· Studio Monitor</div>
+                        <div class="info-feat">· Vocal Mode</div>
+                        <div class="info-feat">· 10-Band EQ</div>
+                        <div class="info-feat">· Sub / Mid / Air</div>
+                        <div class="info-feat">· Dynamics Control</div>
+                        <div class="info-feat">· Crossfeed</div>
+                        <div class="info-feat">· Analog Warmth</div>
+                        <div class="info-feat">· Noise Gate</div>
+                        <div class="info-feat">· Speed Control</div>
+                        <div class="info-feat">· Zero Latency</div>
+                        <div class="info-feat">· Preset System</div>
+                    </div>
+                </div>
+
+                <div class="info-footer">
+                    <span>© 2025 HARJAS</span>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>

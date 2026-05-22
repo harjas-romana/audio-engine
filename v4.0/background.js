@@ -104,4 +104,4 @@ startKeepAlive();
 chrome.runtime.onStartup.addListener(() => {
     console.log('[SonicForge Studio] Service worker started.');
     startKeepAlive();
-});
+}); 

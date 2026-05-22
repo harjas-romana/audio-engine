@@ -557,4 +557,4 @@
     document.addEventListener('DOMContentLoaded', () => setTimeout(init, 800));
   }
 
-})();
+})(); 

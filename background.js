@@ -10,3 +10,4 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.type === 'HR_PING') sendResponse({ ok: true });
   return true;
 }); 
+ 

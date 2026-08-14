@@ -1,0 +1,53 @@
+# Web Audio API & DSP Architecture Log
+- [2025-12-13] Researched AudioContext injection limits on YouTube's DOM.
+- [2025-12-14] Mapped out cross-origin resource sharing (CORS) for audio nodes.
+- [2025-12-15] Set up message passing between popup UI and content script.
+- [2025-12-15] Defined factory presets structure (flat, bass heavy, lofi chill).
+- [2025-12-16] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-16] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-16] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-17] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-17] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-17] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-18] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-18] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-18] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-19] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-19] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-19] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-20] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-20] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-20] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-21] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-21] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-21] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-22] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-22] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-22] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-23] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-23] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-23] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-24] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-24] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-24] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-25] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-25] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-25] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-26] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-26] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-26] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-27] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-27] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-27] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-28] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-28] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-28] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-29] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-29] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-29] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-30] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-30] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-30] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
+- [2025-12-31] Fine-tuning BiquadFilterNode frequencies and Q-factor values.
+- [2025-12-31] Optimizing SpatialPannerNode arrays for 16D surround effect.
+- [2025-12-31] Debugging DynamicsCompressorNode threshold limits to prevent clipping.
